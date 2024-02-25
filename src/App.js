@@ -1,24 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import './styles/App.css';
+import Home from './component/home';
+import Restaurants from './component/restaurants';
+import { BrowserRouter, Routes, Route} from 'react-router-dom';
+import { resContext } from './contexts/restaurantContext';
+import Addhotel from './component/Addhotel';
+import { useState,useEffect } from 'react';
 
 function App() {
+  const [category,setCategory] = useState(localStorage.getItem('category') || []);
+  useEffect(() => {
+    localStorage.setItem('category', category);
+  }, [category]);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    
+    <main>
+    <resContext.Provider value={{category,setCategory}}>
+    <BrowserRouter>
+    <Routes>
+      <Route path='/' element={<Home></Home>}></Route>
+      <Route path='/restaurants' element={<Restaurants></Restaurants>}></Route>
+      <Route path='/Addhotel' element={<Addhotel></Addhotel>}></Route>
+    </Routes> 
+    </BrowserRouter>
+    </resContext.Provider>
+</main>
   );
 }
 

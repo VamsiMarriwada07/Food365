@@ -1,0 +1,32 @@
+.hehe{
+    display: flex;
+    align-items: flex-start;
+    padding-top: 25px;
+}
+.bg{
+    height: 480px;
+    width: 100%;
+    background-image: url("../assets/images/banner1.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 0% 50%;
+}
+.options{
+    width: 290px;
+}
+.logo{
+    width: 20%;
+}
+
+.item{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    cursor: pointer;
+}
+.info{
+    font-weight:bolder;
+    font-size: 12px;
+}
+
